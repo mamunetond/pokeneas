@@ -1,12 +1,12 @@
 const express = require('express')
 const ejs = require("ejs")
 const os = require("os")
-const app = express()
 const port = 80
 var img = new Image();
 
 /* Include controllers */
-const pokeneasController = require("./controllers/pokeneas")
+const fotoPokeneasController = require("./controllers/infoPokeneas")
+const infoPokeneasController = require("./controllers/fotoPokeneas")
 
 const pokenea = [
   ["0", "Jeison Alvarez", 1.78, "Inmunidad al sacol", img.src = 'Imagenes/Jeison ALvarez.jpg',"No llore papi acuerdese que somos neas"],
@@ -16,7 +16,7 @@ const pokenea = [
   ["4", "Jennifer Arias", 1.73, "Importaculismo", img.src = 'Imagenes/Jennifer Arias.jpg',"Oeeee, fuck you men gonorrea"],
   ["5", "Gonzo", 1.75, "Sentimentalismo", img.src = 'Imagenes/Gonzo.jpg',"No ve que le falta un bracito"],
   ["6", "Lady Tabares", 1.62, "Perseverancia",img.src = 'Imagenes/Lady Tabares.jpg', "Hágale que todo bien"]
-  ["7", "El Zarco", 1.80, "Fama", img.src = 'Imagenes/El Zarco.jpg', "Mucha loca"]  
+  ["7", "El Zarco", 1.80, "Fama", img.src = 'Imagenes/El Zarco.webp', "Mucha loca"]  
 ]
 
 app.get('/', (req, res) => {
@@ -32,3 +32,12 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+const app = express()
+app.set("view engine", "ejs")
+app.use(express.static("public"))
+app.use(bodyParser.json())
+
+/* Routes */
+app.get('/info', infoPokeneasController)
+app.get('/foto', fotoPokeneasController)
