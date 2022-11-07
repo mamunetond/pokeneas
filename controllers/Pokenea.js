@@ -23,7 +23,7 @@ exports.infoPokenea = (req, res) => {
 exports.fotoPokenea = (req, res) => {
     const number = Math.floor(Math.random() * pokenea.length);
     pokeneaActual = pokenea[number];
-    render("infoPokeneas" , {
+    res.render("infoPokeneas" , {
         pokeneaID : pokeneaActual,
         hostname : os.hostname()
     });
