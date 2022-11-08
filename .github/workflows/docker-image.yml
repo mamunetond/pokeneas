@@ -24,4 +24,4 @@ jobs:
       run: docker build . --file Dockerfile --tag juanfmtzb098/pokeneas:latest
       
     - name: Docker Push
-      run: docker push danielgara/juanfmtzb098/pokeneas
+      run: docker push juanfmtzb098/pokeneas
